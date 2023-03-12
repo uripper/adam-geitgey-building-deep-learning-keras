@@ -18,7 +18,9 @@ model.add(Dense(1, activation='linear', name='output_layer'))
 model.compile(loss='mean_squared_error', optimizer='adam')
 
 # Create a TensorBoard logger
-logger = keras.callbacks.TensorBoard(log_dir='logs/{}'.format(RUN_NAME), write_graph=True, histogram_freq=5)
+logger = keras.callbacks.TensorBoard(
+    log_dir=f'logs/{RUN_NAME}', write_graph=True, histogram_freq=5
+)
 
 # Train the model
 model.fit(
@@ -37,4 +39,6 @@ X_test = test_data_df.drop('total_earnings', axis=1).values
 Y_test = test_data_df[['total_earnings']].values
 
 test_error_rate = model.evaluate(X_test, Y_test, verbose=0)
-print("The mean squared error (MSE) for the test data set is: {}".format(test_error_rate))
+print(
+    f"The mean squared error (MSE) for the test data set is: {test_error_rate}"
+)

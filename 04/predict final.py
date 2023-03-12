@@ -31,7 +31,9 @@ X_test = test_data_df.drop('total_earnings', axis=1).values
 Y_test = test_data_df[['total_earnings']].values
 
 test_error_rate = model.evaluate(X_test, Y_test, verbose=0)
-print("The mean squared error (MSE) for the test data set is: {}".format(test_error_rate))
+print(
+    f"The mean squared error (MSE) for the test data set is: {test_error_rate}"
+)
 
 # Load the data we make to use to make a prediction
 X = pd.read_csv("proposed_new_product.csv").values
@@ -47,4 +49,4 @@ prediction = prediction[0][0]
 prediction = prediction + 0.1159
 prediction = prediction / 0.0000036968
 
-print("Earnings Prediction for Proposed Product - ${}".format(prediction))
+print(f"Earnings Prediction for Proposed Product - ${prediction}")
