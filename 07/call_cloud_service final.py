@@ -16,7 +16,7 @@ credentials = GoogleCredentials.from_stream(CREDENTIALS_FILE)
 service = googleapiclient.discovery.build('ml', 'v1', credentials=credentials)
 
 # Connect to our Prediction Model
-name = 'projects/{}/models/{}'.format(PROJECT_ID, MODEL_NAME)
+name = f'projects/{PROJECT_ID}/models/{MODEL_NAME}'
 response = service.projects().predict(
     name=name,
     body={'instances': inputs_for_prediction}
